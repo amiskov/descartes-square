@@ -17,6 +17,7 @@ textarea {
     grid-template-rows: 50% 50%;
 }
 
+
 .square {
     box-sizing: border-box;
     padding: 0 10px 0 0;
@@ -76,4 +77,34 @@ textarea {
 
 .saving {
     border-color: gold;
+}
+
+@media only screen and (max-width: 800px) {
+    .big-square {
+        display: block;
+        height: auto;
+    }
+
+    .square {
+        padding-bottom: 20px;
+    }
+
+    .footer {
+        position: static;
+        padding: 0 30px 20px 20px;
+    }
+
+    .about-link {
+        display: block;
+    }
+
+    .vim-mode {
+        display: none;
+    }
+
+    .howto {
+        display: block;
+        margin-left: 0;
+        padding: .4em 0;
+    }
 }

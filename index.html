@@ -3,11 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Квадрат Декарта</title>
-    <link rel="stylesheet" href="codemirror.css">
-    <link rel="stylesheet" href="midnight.css">
-    <link rel="stylesheet" href="solarized.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/codemirror.css">
+    <!-- <link rel="stylesheet" href="css/midnight.css"> -->
+    <!-- <link rel="stylesheet" href="css/solarized.css"> -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -37,77 +39,11 @@
             Vim-режим
         </label>
     </footer>
-    <script src="codemirror.js"></script>
-    <script src="markdown.js"></script>
-    <script src="continuelist.js"></script>
-    <script src="vim.js"></script>
-    <script>
-    const isVimModeEnabled = localStorage.getItem('vimMode') === '1';
-    const vimModeCheckbox = document.getElementById('vimMode');
-    vimModeCheckbox.checked = isVimModeEnabled;
-
-    const defaultText = `- успех;\n- восторг;\n- я стану более лучше одеваться.`;
-
-    const editors = [];
-    const options = {
-        mode: 'markdown',
-        lineNumbers: true,
-        theme: "default",
-        indentWithTabs: false,
-        lineNumbers: false,
-        extraKeys: {
-            "Enter": "newlineAndIndentContinueMarkdownList",
-            "Ctrl-S": save,
-            "Tab": focusNextEditor,
-            "Cmd-S": save
-        }
-    };
-
-    function focusNextEditor(cm) {
-        const currentIndex = editors.indexOf(cm);
-        const nextIndex = (currentIndex !== 3) ? currentIndex + 1 : 0;
-        editors[nextIndex].focus();
-    }
-
-    function save(cm) {
-        const el = cm.display.wrapper;
-        el.classList.add('saving');
-        setTimeout(() => {
-            el.classList.remove('saving')
-        }, 500);
-    }
-
-    if (isVimModeEnabled) {
-        options.keyMap = 'vim';
-    }
-
-    document.querySelectorAll('.square__text').forEach((el, index) => {
-        options.autofocus = index === 0;
-        const editor = CodeMirror.fromTextArea(el, options);
-
-        const savedText = localStorage.getItem(el.name) || '';
-        editor.getDoc().setValue(savedText);
-
-        if(index === 0 && savedText == '') {
-            editor.getDoc().setValue(defaultText);
-        }
-
-        editor.on('change', function(cm, co) {
-            const text = cm.getValue();
-            const el = cm.getTextArea();
-            localStorage.setItem(el.name, text);
-        });
-
-        editors.push(editor);
-    });
-
-    vimModeCheckbox.addEventListener('change', toggleVimMode);
-
-    function toggleVimMode() {
-        localStorage.setItem('vimMode', +this.checked);
-        location.reload();
-    }
-    </script>
+    <script src="js/codemirror.js"></script>
+    <script src="js/markdown.js"></script>
+    <script src="js/continuelist.js"></script>
+    <script src="js/vim.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
