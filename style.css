@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+textarea {
+    font-family: InterUI, -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, sans-serif;
+}
+
+.big-square {
+    box-sizing: border-box;
+    padding: 20px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}
+
+.square {
+    box-sizing: border-box;
+    padding: 0 10px 0 0;
+}
+
+.square__header {
+    margin: 0 0 .5em;
+    padding: 0;
+}
+
+.square__text {
+    box-sizing: border-box;
+    width: 97%;
+    height: 85%;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.em {
+    font-style: normal;
+}
+
+.em_positive {
+    color: green;
+}
+
+.em_negative {
+    color: red;
+}
+
+.CodeMirror {
+    border: 1px solid #CCC;
+    padding: 1px;
+    font-family: 'Pragmata Pro Mono', consolas, monaco, monospaced;
+}
+
+.CodeMirror-focused {
+    border: 2px solid #999;
+    padding: 0;
+    transition: border-color .3s;
+}
+
+.footer {
+    position: absolute;
+    left: 20px;
+    right: 30px;
+    bottom: 20px;
+}
+
+.vim-mode {
+    float: right;
+}
+
+.howto {
+    margin-left: 50px;
+}
+
+.saving {
+    border-color: gold;
+}
