@@ -1,9 +1,8 @@
 const isVimModeEnabled = localStorage.getItem('vimMode') === '1';
+const headerText = localStorage.getItem('header_text') || 'Я стану кочегаром';
 const vimModeCheckbox = document.getElementById('vimMode');
-vimModeCheckbox.checked = isVimModeEnabled;
-
-const defaultText = `- успех;\n- восторг;\n- я стану более лучше одеваться.`;
-
+const headerTextEl = document.getElementById('headerTextEl');
+const defaultText = '- Перестану ходить к девяти на работу;\n- Начну работать сутки через трое.';
 const editors = [];
 const options = {
     mode: 'markdown',
@@ -19,25 +18,14 @@ const options = {
     }
 };
 
-function focusNextEditor(cm) {
-    const currentIndex = editors.indexOf(cm);
-    const nextIndex = (currentIndex !== 3) ? currentIndex + 1 : 0;
-    editors[nextIndex].focus();
-}
-
-function save(cm) {
-    const el = cm.display.wrapper;
-    el.classList.add('saving');
-    setTimeout(() => {
-        el.classList.remove('saving')
-    }, 500);
-}
+headerTextEl.value = headerText;
+vimModeCheckbox.checked = isVimModeEnabled;
 
 if (isVimModeEnabled) {
     options.keyMap = 'vim';
 }
 
-document.querySelectorAll('.square__text').forEach((el, index) => {
+document.querySelectorAll('.square__text>textarea').forEach((el, index) => {
     options.autofocus = index === 0;
     const editor = CodeMirror.fromTextArea(el, options);
 
@@ -57,9 +45,29 @@ document.querySelectorAll('.square__text').forEach((el, index) => {
     editors.push(editor);
 });
 
+headerTextEl.addEventListener('input', function(e) {
+    console.log(this.value);
+
+    localStorage.setItem(this.name, this.value);
+});
+
 vimModeCheckbox.addEventListener('change', toggleVimMode);
 
 function toggleVimMode() {
     localStorage.setItem('vimMode', +this.checked);
     location.reload();
+}
+
+function focusNextEditor(cm) {
+    const currentIndex = editors.indexOf(cm);
+    const nextIndex = (currentIndex !== 3) ? currentIndex + 1 : 0;
+    editors[nextIndex].focus();
+}
+
+function save(cm) {
+    const el = cm.display.wrapper;
+    el.classList.add('saving');
+    setTimeout(() => {
+        el.classList.remove('saving')
+    }, 500);
 }

@@ -1,26 +1,57 @@
+
+    html {
+        box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+
+
 body {
     margin: 0;
     padding: 0;
 }
 
-body,
-textarea {
-    font-family: InterUI, -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, sans-serif;
+:root {
+    --code-font: 'Pragmata Pro Mono', 'Pragmata Pro', Consolas, Monaco, monospaced;
+    --text-font: InterUI, -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, sans-serif;
 }
 
-.big-square {
-    box-sizing: border-box;
+body,
+textarea {
+    font-family: var(--text-font);
+}
+
+.page {
     padding: 20px;
     height: 100vh;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
+    grid-gap: 15px;
+    grid-template-areas: 'header header' 'square-tl square-tr' 'square-bl square-br' 'footer footer';
 }
 
 
 .square {
     box-sizing: border-box;
-    padding: 0 10px 0 0;
+}
+
+.square_tl {
+    grid-area: square-tl;
+}
+.square_tr {
+    grid-area: square-tr;
+    margin-right: 10px;
+}
+.square_bl {
+    grid-area: square-bl;
+}
+.square_br {
+    grid-area: square-br;
+    margin-right: 10px;
 }
 
 .square__header {
@@ -30,9 +61,10 @@ textarea {
 
 .square__text {
     box-sizing: border-box;
-    width: 97%;
-    height: 85%;
-    padding: 10px;
+    /*width: 97%;*/
+    background: #ccc;
+    position: relative;
+    margin-bottom: 20px;
     font-size: 18px;
 }
 
@@ -51,7 +83,7 @@ textarea {
 .CodeMirror {
     border: 1px solid #CCC;
     padding: 1px;
-    font-family: 'Pragmata Pro Mono', consolas, monaco, monospaced;
+    font-family: var(--code-font);
 }
 
 .CodeMirror-focused {
@@ -61,10 +93,8 @@ textarea {
 }
 
 .footer {
-    position: absolute;
-    left: 20px;
-    right: 30px;
-    bottom: 20px;
+    grid-area: footer;
+    margin: 0 10px 20px 0;
 }
 
 .vim-mode {
@@ -79,10 +109,40 @@ textarea {
     border-color: gold;
 }
 
+.page-header {
+    font-size: 24px;
+    grid-area: header;
+    display: flex;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.header-text-label {
+    margin-right: .4em;
+    padding: 5px 0;
+}
+
+.header-text {
+    width: 100%;
+    font-size: 24px;
+    font-family: var(--code-font);
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
 @media only screen and (max-width: 800px) {
-    .big-square {
+    .page {
         display: block;
         height: auto;
+    }
+
+    .page-header {
+        display: block;
+    }
+
+    .header-text {
+        display: block;
+        padding-left: 0;
     }
 
     .square {
@@ -91,7 +151,6 @@ textarea {
 
     .footer {
         position: static;
-        padding: 0 30px 20px 20px;
     }
 
     .about-link {

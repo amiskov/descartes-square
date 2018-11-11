@@ -7,38 +7,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Квадрат Декарта</title>
     <link rel="stylesheet" href="css/codemirror.css">
-    <!-- <link rel="stylesheet" href="css/midnight.css"> -->
-    <!-- <link rel="stylesheet" href="css/solarized.css"> -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="big-square">
+    <div class="page">
+        <div class="page-header">
+            <label class="header-text-label" for="headerText">Намерение:</label>
+            <input name="header_text" type="text" class="header-text" id="headerTextEl" value="">
+        </div>
         <div class="square square_tl">
             <h3 class="square__header">Что <em class="em em_positive">будет</em>, если это <em class="em em_positive">произойдет</em>?</h3>
-            <textarea class="square__text" name="happens" cols="30" rows="10"></textarea>
+            <div class="square__text">
+                <textarea name="happens" cols="30" rows="10"></textarea>
+            </div>
         </div>
         <div class="square square_tr">
             <h3 class="square__header">Что <em class="em em_positive">будет</em>, если это <em class="em em_negative">не произойдет</em>?</h3>
-            <textarea class="square__text" name="doesnt_happen" cols="30" rows="10"></textarea>
+            <div class="square__text">
+                <textarea name="doesnt_happen" cols="30" rows="10"></textarea>
+            </div>
         </div>
         <div class="square square_bl">
             <h3 class="square__header">Чего <em class="em em_negative">не будет</em>, если <em class="em em_positive">это произойдет</em>?</h3>
-            <textarea class="square__text" name="wont_happen_happens" cols="30" rows="10"></textarea>
+            <div class="square__text">
+                <textarea name="wont_happen_happens" cols="30" rows="10"></textarea>
+            </div>
         </div>
         <div class="square square_br">
             <h3 class="square__header">Чего <em class="em em_negative">не будет</em>, если это <em class="em em_negative">не произойдет</em>?</h3>
-            <textarea class="square__text" name="wont_happen_doesnt_happens" cols="30" rows="10"></textarea>
+            <div class="square__text">
+                <textarea name="wont_happen_doesnt_happens" cols="30" rows="10"></textarea>
+            </div>
         </div>
+        <footer class="footer">
+            <a class="about-link" href="https://www.adme.ru/svoboda-psihologiya/prostoj-sposob-prinyat-reshenie-860460/">О технике</a>
+            <span class="howto">Можно использовать <a href="https://guides.hexlet.io/markdown/">маркдаун</a>.</span>
+            <label class="vim-mode">
+                <input id="vimMode" type="checkbox">
+                Vim-режим
+            </label>
+        </footer>
     </div>
-    <footer class="footer">
-        <a class="about-link" href="https://www.adme.ru/svoboda-psihologiya/prostoj-sposob-prinyat-reshenie-860460/">О технике</a>
-        <span class="howto">Можно использовать <a href="https://guides.hexlet.io/markdown/">маркдаун</a>.</span>
-        <label class="vim-mode">
-            <input id="vimMode" type="checkbox">
-            Vim-режим
-        </label>
-    </footer>
     <script src="js/codemirror.js"></script>
     <script src="js/markdown.js"></script>
     <script src="js/continuelist.js"></script>
