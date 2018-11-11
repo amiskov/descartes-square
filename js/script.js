@@ -1,5 +1,5 @@
 const isVimModeEnabled = localStorage.getItem('vimMode') === '1';
-const headerText = localStorage.getItem('header_text') || 'Я стану кочегаром';
+const headerText = localStorage.getItem('header_text') || 'Я хочу быть кочегаром';
 const vimModeCheckbox = document.getElementById('vimMode');
 const headerTextEl = document.getElementById('headerTextEl');
 const defaultText = '- Перестану ходить к девяти на работу;\n- Начну работать сутки через трое.';
